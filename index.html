@@ -130,7 +130,10 @@
     // Key Event Listeners
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
-    
+    // Mouse Event Listener
+    document.addEventListener("mousemove", mouseMoveHandler, false);
+
+    // Right and Left
     function keyDownHandler(e) {
         if(e.key == "Right" || e.key == "ArrowRight") {
             rightPressed = true;
@@ -146,6 +149,14 @@
         }
         else if(e.key == "Left" || e.key == "ArrowLeft") {
             leftPressed = false;
+        }
+    }
+
+    // Mouse
+    function mouseMoveHandler(e) {
+        var relativeX = e.clientX - canvas.offsetLeft;
+        if(relativeX > 0 && relativeX < canvas.width) {
+            paddleX = relativeX - paddleWidth/2;
         }
     }
 
